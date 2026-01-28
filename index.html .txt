@@ -1,0 +1,110 @@
+Code
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    .card {
+      background: #fff0f5;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+
+    .teddy {
+      width: 120px;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    h2 {
+      color: #ff4d6d;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .yes {
+      background: #ff69b4;
+      color: white;
+    }
+
+    .no {
+      background: #d3d3d3;
+      color: black;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img class="teddy" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Teddy">
+    <h2 id="question">Will you be my girlfriend? 💕</h2>
+    <div id="buttons">
+      <button class="yes" onclick="yesClicked()">Yes 💖</button>
+      <button class="no" onclick="noClicked()">No 🙈</button>
+    </div>
+  </div>
+
+  <script>
+    let noCount = 0;
+
+    function noClicked() {
+      noCount++;
+
+      const question = document.getElementById("question");
+      const buttons = document.getElementById("buttons");
+
+      if (noCount === 1) {
+        question.innerText = "Please think again 🥺";
+      } 
+      else if (noCount === 2) {
+        question.innerText = "Last time, think again 💔";
+      } 
+      else if (noCount === 3) {
+        question.innerText = "Beautiful, please accept me 💖";
+        buttons.innerHTML = `<button class="yes" onclick="yesClicked()">Yes 💕</button>`;
+      }
+    }
+
+    function yesClicked() {
+      document.querySelector(".card").innerHTML = `
+        <img class="teddy" src="https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif">
+        <h2>Yayyy! 💕</h2>
+        <p>You just made me the happiest person 🥰</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
